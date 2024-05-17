@@ -1,6 +1,6 @@
 import 'package:flutter_crud/app/data/model/weather_data_current.dart';
-import 'package:flutter_crud/app/data/model//weather_data_daily.dart';
-import 'package:flutter_crud/app/data/model//weather_data_hourly.dart';
+import 'package:flutter_crud/app/data/model/weather_data_daily.dart';
+import 'package:flutter_crud/app/data/model/weather_data_hourly.dart';
 
 class WeatherData {
   final WeatherDataCurrent? current;

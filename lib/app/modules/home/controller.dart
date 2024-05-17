@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter_crud/app/data/model/weather_data.dart';
-import 'package:flutter_crud/app/data/model/weather_data_current.dart';
 import 'package:flutter_crud/app/data/provider/api_provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -10,18 +7,26 @@ class Controller extends GetxController {
   final RxBool _loading = true.obs;
   final RxDouble latitude = 0.0.obs;
   final RxDouble longtitude = 0.0.obs;
+  final RxInt currentIndex = 0.obs;
 
   RxBool loading() => _loading;
   RxDouble getLattitude() => latitude;
   RxDouble getLongtitude() => longtitude;
 
   final weatherData = WeatherData().obs;
+
+  WeatherData getWeatherData() {
+    return weatherData.value;
+  }
+
   @override
   void onInit() {
     // TODO: implement onInit
     if (_loading.isTrue) {
       determineLocation();
-    } else {}
+    } else {
+      getIndex();
+    }
     super.onInit();
   }
 
@@ -55,5 +60,9 @@ class Controller extends GetxController {
         _loading.value = false;
       });
     });
+  }
+
+  RxInt getIndex() {
+    return currentIndex;
   }
 }

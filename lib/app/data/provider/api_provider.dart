@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter_crud/app/data/model/weather_data.dart';
 import 'package:flutter_crud/app/data/model/weather_data_current.dart';
+import 'package:flutter_crud/app/data/model/weather_data_hourly.dart';
 import 'package:flutter_crud/core/utils/helpers/keys.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,10 +19,12 @@ class FetchWeather {
   Future<WeatherData> getData(lat, lon) async {
     final response =
         await http.get(Uri.parse(apiUrl(lat, lon, WEATHER_API_KEY)));
-
     if (response.statusCode == 200) {
-      weatherData = WeatherData(WeatherDataCurrent.fromJson(
-          jsonDecode(response.body) as Map<String, dynamic>));
+      weatherData = WeatherData(
+          WeatherDataCurrent.fromJson(
+              jsonDecode(response.body) as Map<String, dynamic>),
+          WeatherDataHourly.fromJson(
+              jsonDecode(response.body) as Map<String, dynamic>));
       return weatherData!;
     } else {
       throw Exception("Failed to load weather data");

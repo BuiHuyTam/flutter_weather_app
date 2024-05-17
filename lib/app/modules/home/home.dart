@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/app/global_widgets/current_weather.dart';
 import 'package:flutter_crud/app/global_widgets/header.dart';
+import 'package:flutter_crud/app/global_widgets/hourly_weather.dart';
 import 'package:get/get.dart';
 
 import './controller.dart';
@@ -21,15 +23,23 @@ class _HomeState extends State<Home> {
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : ListView(
-                    scrollDirection: Axis.vertical,
-                    children: const [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Header(),
-                      // CurrentWeather(),
-                    ],
+                : Center(
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        SizedBox(
+                          height: 35,
+                        ),
+                        Header(),
+                        CurrentWeather(
+                            weatherDataCurrent: controller
+                                .getWeatherData()
+                                .getCurrentWeather()),
+                        HourlyWeather(
+                            weatherDataHourly:
+                                controller.getWeatherData().getHourlyWeather())
+                      ],
+                    ),
                   ))));
   }
 }

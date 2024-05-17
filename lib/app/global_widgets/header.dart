@@ -27,7 +27,6 @@ class _HeaderState extends State<Header> {
     List<Placemark> placemark =
         await placemarkFromCoordinates(latitude, longitude);
     Placemark place = placemark[0];
-    print(placemark);
     setState(() {
       city = place.country!;
     });
