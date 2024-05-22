@@ -15,14 +15,14 @@ class CurrentWeather extends StatelessWidget {
       children: [
         Text(
           '${FormatTemp(temp: weatherDataCurrent.current.temp!).formatted()}°C',
-          style: TextStyle(fontSize: 60),
+          style: const TextStyle(fontSize: 60),
         ),
         Text('${weatherDataCurrent.current.weather![0].description}'),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('H: ${weatherDataCurrent.current.humidity}°'),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text('L: ${weatherDataCurrent.current.feelsLike}°')

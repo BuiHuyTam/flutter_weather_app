@@ -1,29 +1,15 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/app/modules/home/home.dart';
+import 'package:flutter_crud/app/routes/app_pages.dart';
+import 'package:flutter_crud/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 
-void main() => runApp(GetMaterialApp(home: MyApp()));
-
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-      title: "Weather Prediction",
-    );
-  }
+void main() async {
+  runApp(GetMaterialApp(
+    title: "Weather Application",
+    getPages: AppPages.pages,
+    debugShowCheckedModeBanner: false,
+    initialRoute: AppRoutes.HOURLY,
+  ));
 }

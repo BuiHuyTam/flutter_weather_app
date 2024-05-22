@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:flutter_crud/app/data/model/weather_data_hourly.dart';
 import 'package:flutter_crud/app/modules/home/controller.dart';
@@ -13,16 +15,16 @@ class HourlyWeather extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
-          child: Text(
+          child: const Text(
             "Today",
             style: TextStyle(fontSize: 18),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         SizedBox(
@@ -38,7 +40,7 @@ class HourlyWeather extends StatelessWidget {
                       cardIndex.value = index;
                     },
                     child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 5),
+                      margin: const EdgeInsets.only(left: 10, right: 5),
                       width: 100,
                       child: HourlyWidget(
                         temp: weatherDataHourly.hourly[index].temp!,
@@ -49,7 +51,7 @@ class HourlyWeather extends StatelessWidget {
                       decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                                offset: Offset(0.5, 0),
+                                offset: const Offset(0.5, 0),
                                 blurRadius: 30,
                                 spreadRadius: 1,
                                 color: Colors.grey.shade300)
@@ -94,7 +96,7 @@ class HourlyWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: const EdgeInsets.only(top: 10),
           child: Text(getTime(timeStamp)),
         ),
         Container(

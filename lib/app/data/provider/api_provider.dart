@@ -17,8 +17,7 @@ class FetchWeather {
 
   // GET: fetch data from openWeatherMap API
   Future<WeatherData> getData(lat, lon) async {
-    final response =
-        await http.get(Uri.parse(apiUrl(lat, lon, WEATHER_API_KEY)));
+    final response = await http.get(Uri.parse(apiUrl(lat, lon, weatherKey)));
     if (response.statusCode == 200) {
       weatherData = WeatherData(
           WeatherDataCurrent.fromJson(
